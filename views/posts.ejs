@@ -1,0 +1,44 @@
+<%- include("partials/headblock.ejs") -%>
+<%- include("partials/navbar.ejs") -%>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content">
+                <h1>Posts</h1>
+                <p>Total count: <%- posts.length %></p>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Game</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% posts.forEach(function(post) { %>
+                        <tr>
+                            <td><%- post["id_post"] %></td>
+                            <td><%- post["title"] %></td>
+                            <td><%- post["author"] %></td>
+                            <td><%- post["category"] %></td>
+                            <td>
+                                <a href="/posts/<%- post["id_post"] %>/show_post" class="btn btn-primary">Show</a>
+                                <a href="/posts/<%- post["id_post"] %>/edit" class="btn btn-success">Edit</a>
+                                <a href="/posts/<%- post["id_post"] %>/delete" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+                <a href="/new_post" class="btn btn-success">Create New Post</a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("partials/script.ejs") -%>
+</body>
+</html>
